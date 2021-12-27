@@ -1,4 +1,4 @@
-.heading-color {
+.navbar-brand {
   color: rgb(38, 143, 167);
   /* position: absolute; */
     top: 50%;
@@ -6,15 +6,17 @@
     text-align: center;
     /* transform: translateX(-50%) translateY(-50%); */
 }
+
 .center-content {
   margin: auto;
-  width: 60%;
+  width: 50%;
   border: 3px solid rgb(38, 143, 167);
   padding: 10px;
 }
 .pdfpage-margin {
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%;
   color: rgb(38, 143, 167);
   
 }
@@ -23,7 +25,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin-left: 100px;
+  /* margin-left: 100px; */
 }
 
 .btn-color {
@@ -38,4 +40,9 @@ form {
   font-size: 16px;
   color: rgb(38, 143, 167);
   margin-top: 20px;
+}
+.btn.btn-primary{
+  background-color: #268fa7;
+  margin-top: 20px;
+  
 }
