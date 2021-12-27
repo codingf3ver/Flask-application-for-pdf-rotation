@@ -13,9 +13,12 @@
       
     <body>
         <div class="center-content">
-        <h3  class="pdfpage-margin heading-color">PDF Rotation Application </h3>
+            <nav class="navbar navbar-dark  justify-content-center" style="background-color:#268fa7;">
+                <span class="navbar-brand mb-0 h1">PDF Rotation Application</span>
+              </nav>
+        
 
-        <form action="{{url_for('upload_file') }}"  method="POST" enctype="multipart/form-data">
+        <form class="pdfpage-margin" action="{{url_for('upload_file') }}"  method="POST" enctype="multipart/form-data">
         <input type=file name="file" >
         <label class="pdfpage-margin" for="Page">Page Number to rotate</label>
         <input type="number" id="pdfpage" style=" height:33px;" name = "page_number" min="0">
@@ -26,7 +29,7 @@
             <option value="180">180</option>
             <option value="270">270</option>
         </select>
-        <button type="submit" class="btn-color">Rotate</button>
+        <button type="submit" class="btn btn-primary">Rotate</button>
         </form>
         <h3 class="copyright">&copy; Md Tausif</h3>
     </div>
