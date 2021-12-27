@@ -13,12 +13,12 @@
       
     <body>
         <div class="center-content">
-        <h3  class="pdfpage-margin heading-color">PDF Manipulation Application </h3>
+        <h3  class="pdfpage-margin heading-color">PDF Rotation Application </h3>
 
         <form action="{{url_for('upload_file') }}"  method="POST" enctype="multipart/form-data">
         <input type=file name="file" >
         <label class="pdfpage-margin" for="Page">Page Number to rotate</label>
-        <input type="number" id="pdfpage" name = "page_number" min="0">
+        <input type="number" id="pdfpage" style=" height:33px;" name = "page_number" min="0">
         <label class="pdfpage-margin" for="pdfrotate"> Degree of rotations </label>
         <select id="pdfrotate" style=" height:33px;" name="degree_of_rotation">
             <option value="Select degree">Select degree</option>
@@ -28,7 +28,7 @@
         </select>
         <button type="submit" class="btn-color">Rotate</button>
         </form>
-        
+        <h3 class="copyright">&copy; Md Tausif</h3>
     </div>
     </body>
 </html>
