@@ -3,7 +3,7 @@ from flask import Flask, flash, request, redirect, url_for ,render_template, sen
 from werkzeug.utils import secure_filename
 from PyPDF2 import PdfFileReader, PdfFileWriter
 import time
-import os
+from flask import after_this_request
 
 UPLOAD_FOLDER = 'Transformed PDF'
 ALLOWED_EXTENSIONS = { 'pdf'}
@@ -90,6 +90,11 @@ def upload_file()->str:
 #Redirecting transformed file into new tab    
 @app.route('/rotation/<name>')
 def download_file(name):
+    # deleting file after the rotation
+    @after_this_request
+    def delete(response):
+        os.remove(os.path.join(app.config['UPLOAD_FOLDER'], name))
+        return response
     return send_from_directory(directory='Transformed PDF',path=name)
 
  
