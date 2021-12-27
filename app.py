@@ -1,10 +1,9 @@
 import os
 from flask import Flask, flash, request, redirect, url_for ,render_template, send_from_directory
 from flask import after_this_request
-
 from PyPDF2 import PdfFileReader, PdfFileWriter
 import time
-import os
+
 
 UPLOAD_FOLDER = 'Transformed PDF'
 ALLOWED_EXTENSIONS = { 'pdf'}
@@ -37,32 +36,27 @@ def upload_file()->str:
             
             #getting angle of rotation
             degree_of_rotation = int(request.form['degree_of_rotation'])
-    except Exception as e:
-        pass     
-    #getting the pdf file
-    # check if the post request has the file part
-    
-    finally:
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(url_for('home'))
-        file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(url_for('home'))
-        
-        if file and allowed_file(file.filename):
-            filename = file.filename
-            # filename = secure_filename(file.filename)
             
+            #checker for valid file type
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(url_for('home'))
+            
+            file = request.files['file']
+            
+            # If the user does not select a file, the browser submits an
+            # empty file without a filename.
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(url_for('home'))
+            
+            if file and allowed_file(file.filename):
+                filename = file.filename
+            
+            # pdf writer object    
             pdf_writer = PdfFileWriter()
             pdf_reader = PdfFileReader(file)
-            #getting pdf page count
             pdf_size = pdf_reader.getNumPages()
-            # print(f'pdf size:{pdf_size}')
-            
             
             #getting the pdf page
             basedir = os.path.abspath(os.path.dirname(__file__))
@@ -92,6 +86,13 @@ def upload_file()->str:
                         pdf_writer.write(file)
             return redirect(url_for('download_file', name=filename))
 
+    except Exception as e:
+        pass     
+    
+    return render_template('index.html')
+        
+        
+            
 #Redirecting transformed file into new tab    
 @app.route('/rotation/<name>')
 def download_file(name):
