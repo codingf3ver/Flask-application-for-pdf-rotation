@@ -10,11 +10,13 @@ ALLOWED_EXTENSIONS = { 'pdf'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['SECRET_KEY'] ="ccqeeejfeydqwdwndwdcec" #os.environ.get('SECRET_KEY') 
+app.config['SECRET_KEY'] ="ccqeeejfeydqwdwndwdcec" #os.environ.get('SECRET_KEY') # this is temp security key
 
+#Opening in new tab
 app.add_url_rule(
     "/rotation/<name>", endpoint="download_file") # , build_only=True
 
+#allowed file type
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -24,6 +26,7 @@ def allowed_file(filename):
 def home():
     
     return render_template('index.html')
+
 
 #getting data from form
 @app.route('/pdf', methods=['GET', 'POST'])
@@ -67,7 +70,7 @@ def upload_file()->str:
             if page_number > pdf_size-1:
                 flash("Page number doesn't exist!")
                 return redirect(request.url)
-            time.sleep(1)
+            time.sleep(0.5)
             
             #rotating pages
             for page in range(pdf_size):
@@ -89,6 +92,7 @@ def upload_file()->str:
     except Exception as e:
         pass     
     
+    # if exception it will redirect to home page
     return render_template('index.html')
         
         
