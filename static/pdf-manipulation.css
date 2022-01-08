@@ -8,10 +8,10 @@
 }
 
 .center-content {
-  margin: auto;
-  width: 50%;
-  border: 3px solid rgb(38, 143, 167);
-  padding: 10px;
+    margin: auto;
+    width: 50%;
+    border: 66px solid rgb(38, 143, 167);
+    padding: 10px;
 }
 .pdfpage-margin {
   margin-top: 10px;
