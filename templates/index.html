@@ -22,7 +22,7 @@
         <form class="pdfpage-margin" action="{{url_for('upload_file') }}"  method="POST" enctype="multipart/form-data">
         <input type=file name="file" >
         <label class="pdfpage-margin" for="Page">Page Number to rotate</label>
-        <input type="number" id="pdfpage" style=" height:33px;" name = "page_number" min="0">
+        <input type="number" id="pdfpage" style=" height:33px;" name = "page_number" min="1">
         <label class="pdfpage-margin" for="pdfrotate"> Degree of rotations </label>
         <select id="pdfrotate" style=" height:33px;" name="degree_of_rotation">
             <option value="Select degree">Select degree</option>
