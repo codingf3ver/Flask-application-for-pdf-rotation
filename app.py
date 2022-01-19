@@ -35,7 +35,7 @@ def upload_file()->str:
         if request.method == "POST":
         
             #getting the pdf page number
-            page_number = int(request.form['page_number'])
+            page_number = int(request.form['page_number']) - 1
             
             #getting angle of rotation
             degree_of_rotation = int(request.form['degree_of_rotation'])
